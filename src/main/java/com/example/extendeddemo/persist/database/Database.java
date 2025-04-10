@@ -31,7 +31,7 @@ public class Database {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String user = "root";
-			String password = "mysql";
+			String password = "Gr8conver$ion";
 			String url = "jdbc:mysql://localhost/estoredemo";
 			connection = DriverManager.getConnection(url, user, password);
 

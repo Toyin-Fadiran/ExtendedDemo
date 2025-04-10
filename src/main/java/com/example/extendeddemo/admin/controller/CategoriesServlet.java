@@ -22,19 +22,18 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class CategoriesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final Logger LOGGER = LogManager.getLogger(CategoriesServlet.class.getName());
 
-	
 	private ICategoryService categoryService;
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CategoriesServlet() {
 		super();
 		// TODO Auto-generated constructor stub
-		categoryService= new CategoryServiceImpl();
+		categoryService = new CategoryServiceImpl();
 	}
 
 	/**
@@ -55,32 +54,45 @@ public class CategoriesServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
-		
+
 		System.out.println("I am inside CategoryServlet");
 		String type = request.getParameter("type");
 
 		if (("createCategory".equals(type))) {
-			//testing CreateCtegory flow
-			
+			// testing CreateCtegory flow
+
 			Categories categories = loadObject(request);
-			
-			
+
+			// saved to the DB here
 			categoryService.saveCategory(categories);
-			
-			
-			//CRUD operation to create Category table
+
+			// request.
+
+			// build request addition for future JSP view
+			// Set attributes for data that the JSP will use to generate the view
+			request.setAttribute("successMessage", "Category added successfully!");
+			request.setAttribute("categoryName", categories.getCategoryName());
+			request.setAttribute("categoryDescription", categories.getCategoryDescription());
+			request.setAttribute("categoryImageUrl", categories.getCategoryImageUrl());
+			request.setAttribute("active", categories.getActive());
+			request.setAttribute("addedOn", categories.getAddedOn());
+
+			// Forward the request to the JSP for rendering the view
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/categories-views.jsp");
+			dispatcher.forward(request, response);
+
+			// CRUD operation to create Category table
 
 		} else if ("updateCategory".equals(type)) {
-	
-			
+
 			Categories categoriesUpdate = loadObject(request);
-			
+
 			try {
-				//the appropriate to UPDATE the category object created above
+				// the appropriate to UPDATE the category object created above
 				categoryService.updateCategory(categoriesUpdate);
 				System.out.println(categoriesUpdate);
-				
-				//setting an additional attribute for the end user
+
+				// setting an additional attribute for the end user
 				request.setAttribute("successMessage", "Category object Updated successfully!");
 				// Forward the request to the JSP for rendering the view
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/categories-admin.jsp");
@@ -89,7 +101,7 @@ public class CategoriesServlet extends HttpServlet {
 				// TODO: handle exception
 				System.out.println("update failure!: ");
 				e.printStackTrace();
-				
+
 			}
 		}
 	}

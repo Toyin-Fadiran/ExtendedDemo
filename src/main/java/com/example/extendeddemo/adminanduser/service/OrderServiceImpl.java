@@ -15,6 +15,7 @@ public class OrderServiceImpl implements IOrderService {
 	@Override
 	public Boolean placeOrder(Users users, Orders order) {
 		// TODO Auto-generated method stub
+		//code needs to be added here to implement ORDER service methods
 		return null;
 	}
 	
