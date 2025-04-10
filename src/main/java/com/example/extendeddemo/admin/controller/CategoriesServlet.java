@@ -60,7 +60,8 @@ public class CategoriesServlet extends HttpServlet {
 		String type = request.getParameter("type");
 
 		if (("createCategory".equals(type))) {
-			// we are going to create a category record in DB using our service
+			//testing CreateCtegory flow
+			
 			Categories categories = loadObject(request);
 			
 			
@@ -70,8 +71,7 @@ public class CategoriesServlet extends HttpServlet {
 			//CRUD operation to create Category table
 
 		} else if ("updateCategory".equals(type)) {
-			// we are going to UPDATE an existing
-			// category record in DB using our service
+	
 			
 			Categories categoriesUpdate = loadObject(request);
 			
