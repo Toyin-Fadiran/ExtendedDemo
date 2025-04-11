@@ -3,6 +3,7 @@ package com.example.extendeddemo.adminanduser.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -19,20 +20,34 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	//fields
 	private Database db = Database.getInstance();
 	
+	
+	
 	private static final Logger logger = LogManager.getLogger(CategoryDAOImpl.class.getName());
 
 	@Override
 	public Categories get(long id) {
 		// TODO Auto-generated method stub
 		String readCategoriesSql = "Select * FROM categories where categoryId = ?";
+		//placeholder
+		
+		Categories category = new Categories();
 		
 		try(Connection connection = db.getConnection();
 		PreparedStatement ps = connection.prepareStatement(readCategoriesSql)) {
+			ps.setInt(1, (int) id);
 			
-		} catch (SQLException  e) {
+			//ACTUAL ATTEMPT TO SEND TO DB HERE:
+			ResultSet categoryResultSet= db.executeQuery(ps);
+									//getINt to extract an integer from a string column name
+			category.setCategoryId( categoryResultSet.getInt("categoryId"));
+			category.setCategoryName ( categoryResultSet.getString("categoryName"));
+			
+		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("error occured in Retrieve Category DB: " + e);
 		}
+		
+		
 		
 		
 		

@@ -2,6 +2,7 @@ package com.example.extendeddemo.persist.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.apache.logging.log4j.LogManager;
@@ -67,6 +68,20 @@ public class Database {
 			// TODO: handle exception
 			//e.printStackTrace();
 			logger.error("Error in executeUpdate PS Call", e);
+			
+		}
+		return result;
+	}
+	
+	public ResultSet executeQuery(PreparedStatement preparedStatement) {
+		
+		ResultSet result = null;
+		try {
+			result = preparedStatement.executeQuery();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			//e.printStackTrace();
+			logger.error("Error in executeQUERY PS Call", e);
 			
 		}
 		return result;
