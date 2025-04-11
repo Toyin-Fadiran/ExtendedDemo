@@ -10,9 +10,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.example.extendeddemo.admin.model.Categories;
+import com.example.extendeddemo.persist.dao.IDao;
 import com.example.extendeddemo.persist.database.Database;
 
 public class CategoryDAOImpl implements ICategoryDAO {
+//	public class CategoryDAOImpl implements IDao<Categories> {
 	
 	//fields
 	private Database db = Database.getInstance();

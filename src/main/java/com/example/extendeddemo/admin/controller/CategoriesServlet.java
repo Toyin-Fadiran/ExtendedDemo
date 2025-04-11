@@ -61,25 +61,31 @@ public class CategoriesServlet extends HttpServlet {
 		if (("createCategory".equals(type))) {
 			// testing CreateCtegory flow
 
-			Categories categories = loadObject(request);
+			Categories category = loadObject(request);
 
 			// saved to the DB here
-			categoryService.saveCategory(categories);
+			categoryService.saveCategory(category);
+			
+			
 
 			// request.
 
 			// build request addition for future JSP view
 			// Set attributes for data that the JSP will use to generate the view
 			request.setAttribute("successMessage", "Category added successfully!");
-			request.setAttribute("categoryName", categories.getCategoryName());
-			request.setAttribute("categoryDescription", categories.getCategoryDescription());
-			request.setAttribute("categoryImageUrl", categories.getCategoryImageUrl());
-			request.setAttribute("active", categories.getActive());
-			request.setAttribute("addedOn", categories.getAddedOn());
+			request.setAttribute("category", category);
+			
+//			request.setAttribute("categoryName", category.getCategoryName());
+//		request.setAttribute("categoryDescription", categories.getCategoryDescription());
+//			request.setAttribute("categoryImageUrl", categories.getCategoryImageUrl());
+//			request.setAttribute("active", categories.getActive());
+//			request.setAttribute("addedOn", categories.getAddedOn());
 
 			// Forward the request to the JSP for rendering the view
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/categories-views.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/category-views-jstl.jsp");
 			dispatcher.forward(request, response);
+		//	dispatcher.include(request, response);
+			//.forward(request, response);
 
 			// CRUD operation to create Category table
 
