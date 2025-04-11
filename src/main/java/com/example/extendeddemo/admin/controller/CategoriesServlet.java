@@ -48,8 +48,11 @@ public class CategoriesServlet extends HttpServlet {
 		System.out.println("i am in doGet method of categoriesServlet");
 		
 		//begin process of retrieving Category BY ID
+		
+		//placeholder
+		Categories retrievedCategory = null;
 		try {
-		categoryService.getCategory(Long.parseLong(request.getParameter("id")));
+	retrievedCategory =	categoryService.getCategory(Long.parseLong(request.getParameter("id")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

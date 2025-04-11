@@ -24,6 +24,19 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	public Categories get(long id) {
 		// TODO Auto-generated method stub
+		String readCategoriesSql = "Select * FROM categories where categoryId = ?";
+		
+		try(Connection connection = db.getConnection();
+		PreparedStatement ps = connection.prepareStatement(readCategoriesSql)) {
+			
+		} catch (SQLException  e) {
+			// TODO: handle exception
+			System.out.println("error occured in Retrieve Category DB: " + e);
+		}
+		
+		
+		
+		
 		return null;
 	}
 
