@@ -1,10 +1,16 @@
 package com.example.extendeddemo.admin.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-//javaBean POJO
-public class Categories {
+//javaBean and POJO
+public class Categories implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer categoryId;
 	private String categoryName;
 	private String categoryDescription;
