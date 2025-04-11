@@ -2,6 +2,7 @@ package com.example.extendeddemo.admin.model;
 
 import java.time.LocalDate;
 
+//javaBean POJO
 public class Categories {
 
 	private Integer categoryId;
