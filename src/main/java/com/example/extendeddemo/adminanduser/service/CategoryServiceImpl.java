@@ -51,6 +51,8 @@ public class CategoryServiceImpl implements ICategoryService {
 	public void updateCategory(Categories object) {
 		// TODO Auto-generated method stub
 		
+		categoryDao.update(object);
+		
 	}
 
 	@Override

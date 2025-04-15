@@ -181,9 +181,7 @@ form button:hover {
 					id="categoryImgUrl" name="categoryImgUrl"
 					value="${param.categoryImgUrl}"> <label for="activeId">Active
 					ID:</label> <input type="number" id="activeId" name="activeId"
-					value="${param.activeId}"> <label for="addedOn">Added
-					On:</label> <input type="date" id="addedOn" name="addedOn"
-					value="${param.addedOn}"><label for="addedOn">Added
+					value="${param.activeId}"><label for="addedOn">Added
 					On:</label> <input type="date" id="addedOn" name="addedOn"
 					value="${param.addedOn}"><label
 					for="id">Category ID:</label> <input type="number" id="categoryId"
